@@ -1,0 +1,35 @@
+# services:
+#   api:
+#     build:
+#       context: .
+#       target: dev-envs
+#     container_name: fastapi-application
+#     environment:
+#       PORT: 8000
+#     ports:
+#       - '8000:8000'
+#     volumes:
+#       - /var/run/docker.sock:/var/run/docker.sock
+#     restart: "no"
+
+version: "3.8"
+
+services:
+  api:
+    build:
+      context: .
+      target: dev-envs
+    container_name: fastapi-application
+    environment:
+      PORT: 8000
+    ports:
+      - '8000:8000'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: "no"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
